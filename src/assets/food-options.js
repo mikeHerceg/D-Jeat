@@ -1,4 +1,4 @@
-foodOptions = [
+export const FoodOptions = [
     'chineese',
     'pizza',
     'fast food',
@@ -8,3 +8,4 @@ foodOptions = [
     'steak',
     'pub eats',
 ] 
+export default FoodOptions;
