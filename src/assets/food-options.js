@@ -1,3 +1,4 @@
+
 export const FoodOptions = [
     'chineese',
     'pizza',
@@ -7,7 +8,19 @@ export const FoodOptions = [
     'sea food',
     'steaks',
     `bbq`,
-    'pub eats',
-    'cheese steaks'
+    'perogies',
+    'mac and cheese',
+    'tacos',
+    'burgers',
+    'pasta',
+    'cheese steaks',
+    'hot dogs'
+    'noodles',
+    'kebabs',
+    'ribs',
+    'eggs',
+    'pancakes',
+    'crab Legs',
+    'quesadilla',
 ] 
 export default FoodOptions;
