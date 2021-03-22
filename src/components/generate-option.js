@@ -1,5 +1,6 @@
 import React from "react";
 import { FoodOptions} from "../assets/food-options"
+import { FindOption } from './find-food-option'
 
 
 
@@ -9,6 +10,7 @@ class GenerateOption extends React.Component  {
         super(props);
         this.state = {
             foodSuggestion:'',
+            foodSuggestionString:''
         };
         this.chooseOption = this.chooseOption.bind(this);
     }
@@ -17,9 +19,12 @@ class GenerateOption extends React.Component  {
         if(FoodOptions){
             let rand = Math.floor(Math.random() * FoodOptions.length);
             this.setState({
-                foodSuggestion : `Go eat ${FoodOptions[rand]} then.`
+                foodSuggestion : `${FoodOptions[rand]}`,
+                foodSuggestionString : `Go eat ${FoodOptions[rand]} then.`
             });
         }
+        document.getElementsByTagName('button')[0].style="display:none;"
+        return;
     }
     
 
@@ -27,7 +32,8 @@ class GenerateOption extends React.Component  {
         return (
             <>
                 <button onClick={this.chooseOption}>Not Yet</button>
-                <p>{this.state.foodSuggestion}</p>
+                <p>{this.state.foodSuggestionString}</p>
+                <FindOption foodSuggestion={this.state.foodSuggestion}></FindOption>
             </>
         );
     }

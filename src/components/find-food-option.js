@@ -1,18 +1,16 @@
 import React from "react";
-import { FoodOptions} from "../assets/food-options"
 
-class FindOption extends React.Component  {   
+export class FindOption extends React.Component  {   
 
     constructor(props) {
         super(props);
         this.state = {
-            latitude: [],
-            longitude:[],
-            searchLink:''
+            latitude: '',
+            longitude:'',
         };
         this.getLocation = this.getLocation.bind(this);
-        
     }
+    
 
     getLocation(){
         navigator.geolocation.watchPosition(
@@ -21,6 +19,7 @@ class FindOption extends React.Component  {
                     latitude: position.coords.latitude,
                     longitude:position.coords.longitude,
                 });
+                console.log('success')
             },
             (error) => {
                 if (error.code === error.PERMISSION_DENIED ){
@@ -32,13 +31,17 @@ class FindOption extends React.Component  {
                 }
             }
         );
+        return;
     }
-    goToSearch(){
-        let encodeSuggestions = this.encodeSearchTerm()
-        window.location = `https://www.google.com/maps/search/fast+food/@${this.state.latitude},${this.state.longitude}` 
+    searchFoodOptionLink(){
+        let encodeSuggestions = this.encodeSearchTerm(this.props.foodSuggestion);
+        let latitude = this.state.latitude;
+        let longitude = this.state.longitude;
+        return 'https://www.google.com/maps/search/'+encodeSuggestions+'/@'+latitude+','+longitude;
     }
+    
     encodeSearchTerm(term){
-
+       return term.replace(/\s/g, '+')
     }
     
     componentDidMount(){
@@ -49,10 +52,11 @@ class FindOption extends React.Component  {
         if(this.props.foodSuggestion){
             return (
                 <>  
-                    <button onClick="goToSearch">Find Local {this.props.foodSuggestion} in my area</button>
+                    <button><a href={this.searchFoodOptionLink()}> Find Local {this.props.foodSuggestion} in my area</a></button>
                 </>
             );
-        }else{
+        }
+        else{
             return (
                 <></>
             )

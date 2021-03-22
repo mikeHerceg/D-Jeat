@@ -5,7 +5,9 @@ export const FoodOptions = [
     'mexican food',
     'italian food',
     'sea food',
-    'steak',
+    'steaks',
+    `bbq`,
     'pub eats',
+    'cheese steaks'
 ] 
 export default FoodOptions;
